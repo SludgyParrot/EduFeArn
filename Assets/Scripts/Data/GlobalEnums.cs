@@ -22,4 +22,14 @@ public static class GlobalEnums
         White,
         Black
     }
+
+    /// <summary>
+    /// Enum representing different delegate event types in the game.
+    /// This can be used for categorizing events.
+    /// </summary>
+    public enum DelegateEventType
+    {
+        None,
+        OnDialogueChangeEvent
+    }
 }
