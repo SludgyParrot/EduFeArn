@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CupboardDrawer : SceneItem, IInteractable
+public class CupboardDrawer : SceneItem, IInteractable, IDropHandler
 {
     [SerializeField]
     private Animator animator;
 
-    private bool isOpen;
+    public bool IsOpen {  get; private set; }
 
     public void Interact()
     {
-        isOpen = !isOpen;
-        OpenCloseDrawer(isOpen);
+        IsOpen = !IsOpen;
+        OpenCloseDrawer(IsOpen);
     }
 
     private void OpenCloseDrawer(bool state)
@@ -22,5 +23,18 @@ public class CupboardDrawer : SceneItem, IInteractable
         }
 
         animator.SetBool("IsOpen", state);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if(eventData.pointerEnter != null)
+        {
+            IDroppableItem droppableItem = eventData.pointerDrag.transform.GetComponent<IDroppableItem>();
+
+            if(droppableItem != null )
+            {
+                droppableItem.HideItem();
+            }
+        }
     }
 }

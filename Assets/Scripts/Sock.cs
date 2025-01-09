@@ -9,14 +9,7 @@ public class Sock : DraggableSceneItem
     public ItemColor SockColor {  get; private set; }
 
     public override void OnDrag(PointerEventData eventData)
-    {
-       base.OnDrag(eventData);
-    }
-
-    public override void OnDrop(PointerEventData eventData)
-    {
-        base.OnDrop(eventData);
-    }
+        => base.OnDrag(eventData);
 
     public override void OnPointerDown(PointerEventData eventData)
     {
