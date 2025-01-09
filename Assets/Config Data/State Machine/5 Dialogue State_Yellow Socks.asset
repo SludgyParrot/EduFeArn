@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa5633eec9a45f4eaab3ab4fd84701d, type: 3}
+  m_Name: 5 Dialogue State_Yellow Socks
+  m_EditorClassIdentifier: 
+  <MessageOverride>k__BackingField: Drag the yellow socks to the cupboard
+  <AudioClipOverride>k__BackingField: {fileID: 8300000, guid: 862f9b4351f6ec24799fb6c6a024b0b7, type: 3}
+  <ExitState>k__BackingField: {fileID: 0}
+  requiredItemColor: 3
+  requiredItemCount: 2
+  incorrectResultsMessageOverride: That is incorrect, please try again.

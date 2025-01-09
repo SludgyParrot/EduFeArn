@@ -30,6 +30,19 @@ public static class GlobalEnums
     public enum DelegateEventType
     {
         None,
-        OnDialogueChangeEvent
+        OnRoundStartedEvent,
+        OnRoundCompletedEvent,
+        OnDialogueChangeEvent,
+        OnSubmittedResultsEvent
+    }
+
+    /// <summary>
+    /// Enum representing different results types in the game.
+    /// This can be used for state events.
+    /// </summary>
+    public enum ResultsType
+    {
+        Correct,
+        Incorrect
     }
 }

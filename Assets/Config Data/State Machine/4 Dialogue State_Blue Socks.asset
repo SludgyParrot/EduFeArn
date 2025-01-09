@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa5633eec9a45f4eaab3ab4fd84701d, type: 3}
+  m_Name: 4 Dialogue State_Blue Socks
+  m_EditorClassIdentifier: 
+  <MessageOverride>k__BackingField: Drag the blue socks to the cupboard
+  <AudioClipOverride>k__BackingField: {fileID: 8300000, guid: d145df2654786564584620346a34927f, type: 3}
+  <ExitState>k__BackingField: {fileID: 11400000, guid: 7eec94098ceb07848891e702eab07cb6, type: 2}
+  requiredItemColor: 2
+  requiredItemCount: 3
+  incorrectResultsMessageOverride: That is incorrect, please try again.

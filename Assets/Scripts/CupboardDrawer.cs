@@ -2,10 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CupboardDrawer : SceneItem, IInteractable, IPointerEnterHandler, IPointerExitHandler, IDropHandler
+using static GlobalEnums;
+
+public class CupboardDrawer : SceneItem, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     [SerializeField]
     private Animator animator;
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip drawerOpenSoundClip, 
+                      drawerCloseSoundClip,
+                      drawerItemDropSoundClip;
 
     [Space(5)]
     [SerializeField]
@@ -15,33 +23,37 @@ public class CupboardDrawer : SceneItem, IInteractable, IPointerEnterHandler, IP
 
     public bool IsOpen
     {
-        get
-        {
-            if (animator == null)
-            {
-                throw new InvalidOperationException($"OpenCloseDrawer failed: The animator component: {nameof(animator)} is not assigned in the inspector panel");
-            }
-
-            return animator.GetBool("IsOpen");
-        }
+        get => animator.GetBool("IsOpen");
     }
 
-    private bool isOpen;
-
-    public void Interact()
+    private void OnEnable()
     {
-        isOpen = !isOpen;
-        OpenCloseDrawer(isOpen);
+        DelegateEventsManager.Instance.RegisterEvents((OpenDrawer, DelegateEventType.OnRoundStartedEvent), (CloseDrawer, DelegateEventType.OnRoundCompletedEvent));
     }
 
-    private void OpenCloseDrawer(bool state)
+    private void OnDisable()
     {
-        if(animator == null)
+        DelegateEventsManager.Instance.UnRegisterEvents((OpenDrawer, DelegateEventType.OnRoundStartedEvent), (CloseDrawer, DelegateEventType.OnRoundCompletedEvent));
+    }
+
+    private void Start()
+    {
+        if (animator == null)
         {
             throw new InvalidOperationException($"OpenCloseDrawer failed: The animator component: {nameof(animator)} is not assigned in the inspector panel");
         }
+    }
 
-        animator.SetBool("IsOpen", state);
+    private void OpenDrawer()
+    {
+        animator.SetBool("IsOpen", true);
+        SoundManager.Instance.PlayClip(drawerOpenSoundClip);
+    }
+
+    private void CloseDrawer()
+    {
+        animator.SetBool("IsOpen", false);
+        SoundManager.Instance.PlayClip(drawerCloseSoundClip);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -53,11 +65,19 @@ public class CupboardDrawer : SceneItem, IInteractable, IPointerEnterHandler, IP
 
         if(eventData.pointerEnter != null)
         {
-            IDroppableItem droppableItem = eventData.pointerDrag.transform.GetComponent<IDroppableItem>();
+            Sock droppableItem = eventData?.pointerDrag?.transform?.GetComponent<IDroppableItem>() as Sock;
 
             if(droppableItem != null )
             {
                 droppableItem.HideItem();
+
+                AssessmentStateManager.Instance.CheckResults(droppableItem.SockColor, success => 
+                {
+                    if(success)
+                    {
+                        SoundManager.Instance.PlayClip(drawerItemDropSoundClip);
+                    }
+                });
             }
         }
     }
@@ -71,7 +91,7 @@ public class CupboardDrawer : SceneItem, IInteractable, IPointerEnterHandler, IP
 
         if (eventData.pointerEnter != null)
         {
-            IDroppableItem droppableItem = eventData.pointerDrag.transform.GetComponent<IDroppableItem>();
+            IDroppableItem droppableItem = eventData?.pointerDrag?.transform?.GetComponent<IDroppableItem>();
 
             if (droppableItem != null)
             {
@@ -90,7 +110,7 @@ public class CupboardDrawer : SceneItem, IInteractable, IPointerEnterHandler, IP
 
         if (eventData.pointerEnter != null)
         {
-            IDroppableItem droppableItem = eventData.pointerDrag.transform.GetComponent<IDroppableItem>();
+            IDroppableItem droppableItem = eventData?.pointerDrag?.transform?.GetComponent<IDroppableItem>();
 
             if (droppableItem != null)
             {

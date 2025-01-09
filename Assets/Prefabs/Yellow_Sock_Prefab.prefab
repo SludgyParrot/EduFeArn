@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14538bb85bb33a94094a2e049f37b804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Red Sock
-  <SockColor>k__BackingField: 0
+  <Name>k__BackingField: Yellow Sock
+  <SockColor>k__BackingField: 3
