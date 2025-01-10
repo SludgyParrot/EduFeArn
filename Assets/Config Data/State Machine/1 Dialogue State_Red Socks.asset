@@ -18,13 +18,18 @@ MonoBehaviour:
   stateConfigs:
   - {fileID: 11400000, guid: ad878202ad6875a4682300fbd3b7e6c1, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: ad878202ad6875a4682300fbd3b7e6c1, type: 2}
-  - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
-  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
-  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: ad878202ad6875a4682300fbd3b7e6c1, type: 2}
   requiredItemColor: 0
   requiredItemCount: 3
+  correctResultsMessageOverride: 'That is correct! '
   incorrectResultsMessageOverride: That is incorrect, please try again.
+  completedResultsMessageOverride: We are done. Thank you for helping me tidy my
+    room!

@@ -21,10 +21,17 @@ public class DialogueState : State
 
     [Space(5)]
     [SerializeField]
-    private string incorrectResultsMessageOverride;
+    private string correctResultsMessageOverride,
+                   incorrectResultsMessageOverride, 
+                   completedResultsMessageOverride;
 
     public override async void OnEnter()
     {
+        if(AssessmentStateManager.Instance.Completed)
+        {
+            return;
+        }
+
         AssessmentStateManager.Instance.RequiredItemColor = requiredItemColor;
         AssessmentStateManager.Instance.RequiredItemCount = requiredItemCount;
 
@@ -51,21 +58,33 @@ public class DialogueState : State
 
     private async void DialogueState_OnSubmittedResultsEvent(ResultsType resultsType)
     {
-        if(resultsType == ResultsType.Correct)
+        if(StateCompleted)
         {
+            return;
+        }
+
+        AssessmentStateManager.Instance.ClearStateMachine();
+
+        if (resultsType == ResultsType.Correct)
+        {
+            AssessmentStateManager.Instance.Retry = false;
+
+            await Task.Delay(1000);
+
             if (ExitState == null)
             {
-                throw new Exception("Exit state is not assigned.");
+                DelegateEventsManager.Instance.InvokeEvents((completedResultsMessageOverride, DelegateEventType.OnDialogueChangeEvent));
+                AssessmentStateManager.Instance.Completed = true;
+                return;
             }
 
+            DelegateEventsManager.Instance.InvokeEvents((correctResultsMessageOverride, DelegateEventType.OnDialogueChangeEvent));
             await Task.Delay(1000);
             DelegateEventsManager.Instance.InvokeEvents(DelegateEventType.OnRoundCompletedEvent);
 
             await Task.Delay(500);
             AssetsFactoryManager.Instance.HideAllSocks();
-
-            await Task.Delay(2000);
-            AssessmentStateManager.Instance.Retry = false;
+            await Task.Delay(2500);
             AssessmentStateManager.Instance.SetCurrentState(ExitState);
         }
         else
@@ -76,10 +95,13 @@ public class DialogueState : State
             AssessmentStateManager.Instance.Retry = true;
             AssessmentStateManager.Instance.SetCurrentState(this);
         }
+
+        OnExit();
     }
 
     public override void OnExit()
     {
+        StateCompleted = true;
         DelegateEventsManager.Instance.UnregisterEvents<ResultsType>((DialogueState_OnSubmittedResultsEvent, DelegateEventType.OnSubmittedResultsEvent));
     }
 }

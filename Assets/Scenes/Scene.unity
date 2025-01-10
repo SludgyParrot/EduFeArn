@@ -2098,7 +2098,7 @@ GameObject:
   - component: {fileID: 1777768940}
   - component: {fileID: 1777768941}
   m_Layer: 0
-  m_Name: __Round Manager
+  m_Name: __Assets State Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

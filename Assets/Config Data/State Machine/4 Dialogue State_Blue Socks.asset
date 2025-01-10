@@ -29,4 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   requiredItemColor: 2
   requiredItemCount: 3
+  correctResultsMessageOverride: 'That is correct! '
   incorrectResultsMessageOverride: That is incorrect, please try again.
+  completedResultsMessageOverride: We are done. Thank you for helping me tidy my
+    room!

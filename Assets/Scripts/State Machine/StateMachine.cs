@@ -14,6 +14,7 @@ using UnityEngine;
 public abstract class StateMachine<T> : Singletons<T> where T : Object
 {
     // Property representing the current active state of the machine.
+    [field: SerializeField]
     public State CurrentState { get; private set; }
 
     // Virtual method to set the current state of the machine.
@@ -33,5 +34,8 @@ public abstract class StateMachine<T> : Singletons<T> where T : Object
         // Call OnEnter for the new state to initialize it.
         CurrentState.OnEnter();
     }
+
+    public virtual void ClearStateMachine()
+        => CurrentState = null;
 }
 

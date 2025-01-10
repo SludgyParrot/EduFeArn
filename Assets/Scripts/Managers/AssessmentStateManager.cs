@@ -16,6 +16,8 @@ public class AssessmentStateManager : StateMachine<AssessmentStateManager>
 
     public bool Retry {  get; set; }
 
+    public bool Completed { get; set; }
+
     public void CheckResults(ItemColor item, Action<bool> callback = null)
     {
         if (item != RequiredItemColor)

@@ -16,15 +16,18 @@ MonoBehaviour:
   <AudioClipOverride>k__BackingField: {fileID: 8300000, guid: 61aa8b2a8ae5fca4684a514639055f63, type: 3}
   <ExitState>k__BackingField: {fileID: 11400000, guid: 79085c10c6ed72d4690006953c333b64, type: 2}
   stateConfigs:
-  - {fileID: 11400000, guid: 33fe1e4b8bed9d14f999d8aec88c6b0d, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
-  - {fileID: 11400000, guid: 33fe1e4b8bed9d14f999d8aec88c6b0d, type: 2}
   - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
+  - {fileID: 11400000, guid: 33fe1e4b8bed9d14f999d8aec88c6b0d, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
   - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: 33fe1e4b8bed9d14f999d8aec88c6b0d, type: 2}
   requiredItemColor: 5
   requiredItemCount: 2
+  correctResultsMessageOverride: 'That is correct! '
   incorrectResultsMessageOverride: That is incorrect, please try again.
+  completedResultsMessageOverride: We are done. Thank you for helping me tidy my
+    room!

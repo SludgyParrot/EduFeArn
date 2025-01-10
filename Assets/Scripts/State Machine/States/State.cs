@@ -29,6 +29,8 @@ public abstract class State : ScriptableObject
     [field: SerializeField]
     protected State ExitState { get; private set; }
 
+    protected bool StateCompleted { get; set; }
+
     // Abstract method called when the state is entered.
     // Derived classes should implement specific behavior for entering this state.
     public abstract void OnEnter();
