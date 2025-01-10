@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SoundManager : Singletons<SoundManager>
@@ -16,12 +17,19 @@ public class SoundManager : Singletons<SoundManager>
         }
     }
 
-    public void PlayClip(AudioClip clip, bool loop = false)
+    public async void PlayClip(AudioClip clip, bool loop = false)
     {
         if(clip == null)
         {
             throw new ArgumentNullException("Play clip failed: clip parameter value cannot be null.");
         }
+
+        if(audioSource.clip != null)
+        {
+            audioSource.clip = null;
+        }
+
+        await Task.Delay(10);
 
         audioSource.clip = clip;
         audioSource.loop = loop;

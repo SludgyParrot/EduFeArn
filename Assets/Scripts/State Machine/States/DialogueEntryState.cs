@@ -16,7 +16,6 @@ public class DialogueEntryState : State
             SoundManager.Instance.PlayClip(AudioClipOverride);
         }
         await Task.Delay(2500);
-        DelegateEventsManager.Instance.InvokeEvents(DelegateEventType.OnRoundStartedEvent);
         if (ExitState != null)
         {
             AssessmentStateManager.Instance.SetCurrentState(ExitState);

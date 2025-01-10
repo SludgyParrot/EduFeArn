@@ -15,6 +15,18 @@ MonoBehaviour:
   <MessageOverride>k__BackingField: Drag the green socks to the cupboard
   <AudioClipOverride>k__BackingField: {fileID: 8300000, guid: 29e1838db7c202641856c4b3c1d514cf, type: 3}
   <ExitState>k__BackingField: {fileID: 11400000, guid: 9f5d86a9d8fab4c489619270ea6934f9, type: 2}
+  stateConfigs:
+  - {fileID: 11400000, guid: 781a61ba01247124aa1d95bf7800bc5a, type: 2}
+  - {fileID: 11400000, guid: ad878202ad6875a4682300fbd3b7e6c1, type: 2}
+  - {fileID: 11400000, guid: ad878202ad6875a4682300fbd3b7e6c1, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: 781a61ba01247124aa1d95bf7800bc5a, type: 2}
+  - {fileID: 11400000, guid: 781a61ba01247124aa1d95bf7800bc5a, type: 2}
+  - {fileID: 11400000, guid: b640fcfb534fa934cbfaba627b1cf68c, type: 2}
+  - {fileID: 11400000, guid: 07e0ae0d23ef4ea45bc25fda624db4d4, type: 2}
+  - {fileID: 11400000, guid: 781a61ba01247124aa1d95bf7800bc5a, type: 2}
+  - {fileID: 11400000, guid: 33fe1e4b8bed9d14f999d8aec88c6b0d, type: 2}
   requiredItemColor: 1
   requiredItemCount: 4
   incorrectResultsMessageOverride: That is incorrect, please try again.

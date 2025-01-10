@@ -25,6 +25,7 @@ public class ResultsUIHandler : MonoBehaviour
     private List<Results> results;
 
     private const float DefaultTransitionSpeed = 5.0f;
+    private const float DefaultTransitionDistanceThreshold = 0.01f;
 
     public void Show(ResultsType resultType)
     {
@@ -34,9 +35,11 @@ public class ResultsUIHandler : MonoBehaviour
         {
             SoundManager.Instance.PlayClip(result.SoundClip);
 
+            resultsIconDisplayer.gameObject.SetActive(true);
             while (resultsIconDisplayer.transform.localScale.x < 1.0f)
             {
-                resultsIconDisplayer.transform.localScale = Vector3.Lerp(resultsIconDisplayer.transform.localScale, Vector3.one, DefaultTransitionSpeed * Time.deltaTime);
+                Vector3 newScale = Vector3.Lerp(resultsIconDisplayer.transform.localScale, Vector3.one, DefaultTransitionSpeed * Time.deltaTime);
+                resultsIconDisplayer.transform.localScale = newScale;
                 await Task.Yield();
             }
         });
@@ -44,28 +47,40 @@ public class ResultsUIHandler : MonoBehaviour
 
     public async void Hide()
     {
-        while (resultsIconDisplayer.transform.localScale.x > 0.0f)
+        while (resultsIconDisplayer.transform.localScale.x > DefaultTransitionDistanceThreshold)
         {
-            resultsIconDisplayer.transform.localScale = Vector3.Lerp(resultsIconDisplayer.transform.localScale, Vector3.zero, DefaultTransitionSpeed * Time.deltaTime);
+            Vector3 newScale = Vector3.Lerp(resultsIconDisplayer.transform.localScale, Vector3.zero, DefaultTransitionSpeed * Time.deltaTime);
+            resultsIconDisplayer.transform.localScale = newScale;
             await Task.Yield();
         }
     }
 
     private void OnEnable()
     {
+        //DelegateEventsManager.Instance.RegisterEvents((ResultsUIHandler_OnRoundStartedEvent, DelegateEventType.OnRoundStartedEvent));
         DelegateEventsManager.Instance.RegisterEvents<ResultsType>((ResultsUIHandler_OnSubmittedResultsEvent, DelegateEventType.OnSubmittedResultsEvent));
     }
 
     private void OnDisable()
     {
-        DelegateEventsManager.Instance.UnRegisterEvents<ResultsType>((ResultsUIHandler_OnSubmittedResultsEvent, DelegateEventType.OnSubmittedResultsEvent));
+        //DelegateEventsManager.Instance.UnregisterEvents((ResultsUIHandler_OnRoundStartedEvent, DelegateEventType.OnRoundStartedEvent));
+        DelegateEventsManager.Instance.UnregisterEvents<ResultsType>((ResultsUIHandler_OnSubmittedResultsEvent, DelegateEventType.OnSubmittedResultsEvent));
     }
 
     private void Start()
-        => Hide();
+    {
+        Hide();
+    }
 
     private void ResultsUIHandler_OnSubmittedResultsEvent(ResultsType resultType)
-        => Show(resultType);
+    {
+        Show(resultType);
+    }
+
+    private void ResultsUIHandler_OnRoundStartedEvent()
+    {
+        Hide();
+    }
 
     private void UpdateResultsGUI(Results results, Action callbackResults = null)
     {

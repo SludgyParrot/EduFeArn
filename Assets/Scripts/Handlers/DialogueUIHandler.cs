@@ -26,6 +26,6 @@ public class DialogueUIHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        DelegateEventsManager.Instance.UnRegisterEvents<string>((SetDialogueText, DelegateEventType.OnDialogueChangeEvent));
+        DelegateEventsManager.Instance.UnregisterEvents<string>((SetDialogueText, DelegateEventType.OnDialogueChangeEvent));
     }
 }

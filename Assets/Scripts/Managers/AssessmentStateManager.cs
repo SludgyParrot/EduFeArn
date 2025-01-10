@@ -14,6 +14,8 @@ public class AssessmentStateManager : StateMachine<AssessmentStateManager>
 
     private List<ItemColor> requiredItems;
 
+    public bool Retry {  get; set; }
+
     public void CheckResults(ItemColor item, Action<bool> callback = null)
     {
         if (item != RequiredItemColor)
@@ -42,7 +44,7 @@ public class AssessmentStateManager : StateMachine<AssessmentStateManager>
 
     private void OnDisable()
     {
-        DelegateEventsManager.Instance.UnRegisterEvents((AssessmentStateManager_OnRoundStartedEvent, DelegateEventType.OnRoundStartedEvent));
+        DelegateEventsManager.Instance.UnregisterEvents((AssessmentStateManager_OnRoundStartedEvent, DelegateEventType.OnRoundStartedEvent));
     }
 
     protected override void Init()

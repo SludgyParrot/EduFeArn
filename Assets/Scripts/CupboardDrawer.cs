@@ -33,7 +33,7 @@ public class CupboardDrawer : SceneItem, IPointerEnterHandler, IPointerExitHandl
 
     private void OnDisable()
     {
-        DelegateEventsManager.Instance.UnRegisterEvents((OpenDrawer, DelegateEventType.OnRoundStartedEvent), (CloseDrawer, DelegateEventType.OnRoundCompletedEvent));
+        DelegateEventsManager.Instance.UnregisterEvents((OpenDrawer, DelegateEventType.OnRoundStartedEvent), (CloseDrawer, DelegateEventType.OnRoundCompletedEvent));
     }
 
     private void Start()

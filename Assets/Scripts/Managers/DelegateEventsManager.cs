@@ -129,7 +129,7 @@ public class DelegateEventsManager : Singletons<DelegateEventsManager>
 
     #region UnSubscribe Events
     // Method to unregister event handlers for events that do not take parameters.
-    public void UnRegisterEvents(params (Action function, DelegateEventType eventType)[] eventArgs)
+    public void UnregisterEvents(params (Action function, DelegateEventType eventType)[] eventArgs)
     {
         // Check if no event arguments are passed.
         if (eventArgs.Length == 0)
@@ -155,7 +155,7 @@ public class DelegateEventsManager : Singletons<DelegateEventsManager>
     }
 
     // Method to unregister event handlers for events with parameters of type T.
-    public void UnRegisterEvents<T>(params (Action<T> function, DelegateEventType eventType)[] eventArgs)
+    public void UnregisterEvents<T>(params (Action<T> function, DelegateEventType eventType)[] eventArgs)
     {
         // Check if no event arguments are passed.
         if (eventArgs.Length == 0)
